@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RestaurantOS | Management Dashboard</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-icon"><i class="bi bi-shop"></i></div>
+            <div>
+                <h4>RestaurantOS</h4>
+                <small>Management System</small>
+            </div>
+        </div>
+
+        <div class="sidebar-label">MAIN MENU</div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-link active" data-page="dashboard">
+                <i class="bi bi-grid"></i> Dashboard
+            </a>
+            <a href="#" class="nav-link" data-page="orders">
+                <i class="bi bi-receipt"></i> Orders
+            </a>
+            <a href="#" class="nav-link" data-page="menu">
+                <i class="bi bi-menu-button-wide"></i> Food Menu
+            </a>
+            <a href="#" class="nav-link" data-page="reservations">
+                <i class="bi bi-calendar-check"></i> Reservations
+            </a>
+            <a href="#" class="nav-link" data-page="tables">
+                <i class="bi bi-grid-3x3"></i> Tables
+            </a>
+            <a href="#" class="nav-link" data-page="customers">
+                <i class="bi bi-people"></i> Customers
+            </a>
+            <a href="#" class="nav-link" data-page="employees">
+                <i class="bi bi-person-badge"></i> Employees
+            </a>
+            <a href="#" class="nav-link" data-page="inventory">
+                <i class="bi bi-box-seam"></i> Inventory
+            </a>
+            <a href="#" class="nav-link" data-page="suppliers">
+                <i class="bi bi-truck"></i> Suppliers
+            </a>
+            <a href="#" class="nav-link" data-page="expenses">
+                <i class="bi bi-wallet2"></i> Expenses
+            </a>
+            <a href="#" class="nav-link" data-page="reports">
+                <i class="bi bi-bar-chart"></i> Reports
+            </a>
+        </nav>
+
+        <div class="sidebar-label">SYSTEM</div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-link" data-page="settings">
+                <i class="bi bi-gear"></i> Settings
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="admin-avatar">A</div>
+            <div>
+                <strong>Admin User</strong>
+                <small>Administrator</small>
+            </div>
+            <i class="bi bi-three-dots"></i>
+        </div>
+    </aside>
+
+    <!-- Main Area -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="d-flex align-items-center gap-3">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <div>
+                    <h5 id="pageTitle">Dashboard</h5>
+                    <small id="pageSubtitle">Welcome back! Here's what's happening today.</small>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <div class="date-display">
+                    <i class="bi bi-calendar3"></i>
+                    <span id="currentDate"></span>
+                </div>
+                <button class="icon-btn" id="notificationBtn">
+                    <i class="bi bi-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+                <div class="topbar-avatar">A</div>
+            </div>
+        </header>
+
+        <!-- Dynamic Page Content -->
+        <section class="page-content" id="pageContent">
+
+            <!-- Dashboard -->
+            <div class="page-section active" id="dashboard">
+
+                <div class="welcome-banner">
+                    <div>
+                        <span class="welcome-tag">OVERVIEW</span>
+                        <h2>Good day, Admin! 👋</h2>
+                        <p>Here's your restaurant performance overview.</p>
+                    </div>
+                    <div class="welcome-icon"><i class="bi bi-shop-window"></i></div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Total Revenue</span>
+                            <div class="stat-icon blue"><i class="bi bi-currency-dollar"></i></div>
+                        </div>
+                        <h3 id="totalRevenue">৳ 45,850</h3>
+                        <small class="positive"><i class="bi bi-arrow-up"></i> 12.5% this month</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Total Orders</span>
+                            <div class="stat-icon purple"><i class="bi bi-bag-check"></i></div>
+                        </div>
+                        <h3 id="totalOrders">248</h3>
+                        <small class="positive"><i class="bi bi-arrow-up"></i> 8.2% this month</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Customers</span>
+                            <div class="stat-icon orange"><i class="bi bi-people"></i></div>
+                        </div>
+                        <h3 id="totalCustomers">186</h3>
+                        <small class="positive"><i class="bi bi-arrow-up"></i> 5.4% this month</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Available Tables</span>
+                            <div class="stat-icon green"><i class="bi bi-grid-3x3"></i></div>
+                        </div>
+                        <h3 id="availableTables">12/20</h3>
+                        <small class="neutral">Current availability</small>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="content-grid">
+                    <div class="panel sales-card">
+                        <div class="panel-header">
+                            <div>
+                                <h5>Revenue Overview</h5>
+                                <p>Monthly sales performance</p>
+                            </div>
+                            <select id="salesPeriod" class="form-select form-select-sm">
+                                <option value="week">This Week</option>
+                                <option value="month" selected>This Month</option>
+                            </select>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h5>Popular Items</h5>
+                                <p>Best selling food items</p>
+                            </div>
+                        </div>
+                        <div id="popularItems" class="popular-items"></div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="panel recent-orders">
+                    <div class="panel-header">
+                        <div>
+                            <h5>Recent Orders</h5>
+                            <p>Latest restaurant orders</p>
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="showPage('orders')">
+                            View All
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentOrdersBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders -->
+            <div class="page-section" id="orders">
+                <div class="page-heading">
+                    <div>
+                        <h3>Orders Management</h3>
+                        <p>Manage and track restaurant orders.</p>
+                    </div>
+                    <button class="btn btn-primary" id="addOrderBtn">
+                        <i class="bi bi-plus-lg"></i> New Order
+                    </button>
+                </div>
+
+                <div class="stats-grid compact-stats">
+                    <div class="stat-card">
+                        <span>Total Orders</span>
+                        <h3 id="orderCount">0</h3>
+                    </div>
+                    <div class="stat-card">
+                        <span>Pending Orders</span>
+                        <h3 id="pendingCount">0</h3>
+                    </div>
+                    <div class="stat-card">
+                        <span>Completed Orders</span>
+                        <h3 id="completedCount">0</h3>
+                    </div>
+                    <div class="stat-card">
+                        <span>Cancelled Orders</span>
+                        <h3 id="cancelledCount">0</h3>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <h5>All Orders</h5>
+                            <p>View and manage all orders</p>
+                        </div>
+                        <input type="search" id="orderSearch" class="form-control search-input" placeholder="Search orders...">
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel mt-4">
+                    <div class="panel-header">
+                        <div>
+                            <h5>Orders Analytics</h5>
+                            <p>Order performance overview</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="ordersChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Food Menu -->
+            <div class="page-section" id="menu">
+                <div class="page-heading">
+                    <div>
+                        <h3>Food Menu Management</h3>
+                        <p>Manage your restaurant food and prices.</p>
+                    </div>
+                    <button class="btn btn-primary" id="addFoodBtn">
+                        <i class="bi bi-plus-lg"></i> Add Food
+                    </button>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h5>All Menu Items</h5>
+                        <input type="search" class="form-control search-input" id="menuSearch" placeholder="Search food...">
+                    </div>
+                    <div id="menuGrid" class="menu-grid"></div>
+                </div>
+            </div>
+
+            <!-- Other Pages -->
+            <div class="page-section" id="reservations">
+                <div class="page-heading"><div><h3>Reservations</h3><p>Manage table bookings.</p></div></div>
+                <div class="panel">
+                    <div class="panel-header"><h5>Reservation Management</h5></div>
+                    <div id="reservationsContent"></div>
+                </div>
+            </div>
+
+            <div class="page-section" id="tables">
+                <div class="page-heading"><div><h3>Tables Management</h3><p>Monitor restaurant tables.</p></div></div>
+                <div class="panel">
+                    <div class="panel-header"><h5>Restaurant Tables</h5></div>
+                    <div id="tablesContent" class="tables-grid"></div>
+                </div>
+            </div>
+
+            <div class="page-section" id="customers">
+                <div class="page-heading"><div><h3>Customers</h3><p>Manage customer information.</p></div></div>
+                <div class="panel">
+                    <div class="panel-header"><h5>Customer List</h5></div>
+                    <div id="customersContent"></div>
+                </div>
+            </div>
+
+            <div class="page-section" id="employees">
+                <div class="page-heading"><div><h3>Employees</h3><p>Manage restaurant staff.</p></div></div>
+                <div class="panel">
+                    <div class="panel-header"><h5>Employee Management</h5></div>
+                    <div id="employeesContent"></div>
+                </div>
+            </div>
+
+            <div class="page-section" id="inventory">
+                <div class="page-heading"><div><h3>Inventory</h3><p>Manage restaurant stock.</p></div></div>
+                <div class="panel">
+                    <div class="panel-header"><h5>Inventory Management</h5></div>
+                    <div id="inventoryContent"></div>
+                </div>
+            </div>
+
+            <div class="page-section" id="suppliers">
+                <div class="page-heading"><div><h3>Suppliers</h3><p>Manage suppliers.</p></div></div>
+                <div class="panel">
+                    <div class="panel-header"><h5>Supplier Management</h5></div>
+                    <div id="suppliersContent"></div>
+                </div>
+            </div>
+
+            <div class="page-section" id="expenses">
+                <div class="page-heading"><div><h3>Expenses</h3><p>Track restaurant expenses.</p></div></div>
+                <div class="panel">
+                    <div class="panel-header"><h5>Expense Management</h5></div>
+                    <div id="expensesContent"></div>
+                </div>
+            </div>
+
+            <div class="page-section" id="reports">
+                <div class="page-heading"><div><h3>Reports & Analytics</h3><p>Restaurant business reports.</p></div></div>
+                <div class="panel">
+                    <div class="panel-header"><h5>Business Reports</h5></div>
+                    <div id="reportsContent"></div>
+                </div>
+            </div>
+
+            <div class="page-section" id="settings">
+                <div class="page-heading"><div><h3>Settings</h3><p>Configure your restaurant system.</p></div></div>
+                <div class="panel">
+                    <div class="panel-header"><h5>System Settings</h5></div>
+                    <div id="settingsContent"></div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="appModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Add New</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer">
+                <button class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" id="modalSaveBtn">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Custom JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
